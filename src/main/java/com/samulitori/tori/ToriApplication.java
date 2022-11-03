@@ -36,9 +36,15 @@ public class ToriApplication {
 			categoryRepo.save(new Category("Elektroniikka"));
 			categoryRepo.save(new Category("Tietokoneet"));
 			categoryRepo.save(new Category("Puhelimet"));
+			categoryRepo.save(new Category("Sisustus ja huonekalut"));
 
 
 			listingRepo.save(new Listing("bmw 330d","ajettu 400tkm ostakaa plz", 19990, categoryRepo.findByName("Autot").get(0), userRepo.findByUsername("seppo")));
+			listingRepo.save(new Listing("Sänky","Runkopatja ikää sultan 90x200cm", 100, categoryRepo.findByName("Sisustus ja huonekalut").get(0), userRepo.findByUsername("seppo")));
+			listingRepo.save(new Listing("pelitietokone i5 gtx-1060","hyvässä kunnossa pelejä pelattu", 500, categoryRepo.findByName("Tietokoneet").get(0), userRepo.findByUsername("seppo")));
+			listingRepo.save(new Listing("call of duty mw2","hyvässä kunnossa", 10, categoryRepo.findByName("Pelit").get(0), userRepo.findByUsername("seppo")));
+			listingRepo.save(new Listing("Pöytä","60cm korkea", 40, categoryRepo.findByName("Sisustus ja huonekalut").get(0), userRepo.findByUsername("seppo")));
+			listingRepo.save(new Listing("monitori 24\"","ei oo kuolleita pikseleitä", 200, categoryRepo.findByName("Tietokoneet").get(0), userRepo.findByUsername("seppo")));
 
 
 						

@@ -34,8 +34,10 @@ public class ListingController {
     }
 
     @GetMapping(value=("/delete/{id}"))
-    public String deleteListing(@PathVariable("id") Long listingId, Model model){
-        listingRepo.deleteById(listingId);
+    public String deleteListing(Principal principal, @PathVariable("id") Long listingId, Model model){
+        if (userRepo.findByUsername(principal.getName()) == listingRepo.findById(listingId).get().getUser() || userRepo.findByUsername(principal.getName()).getRole() == "ADMIN"){
+            listingRepo.deleteById(listingId);
+        }
         return "redirect:../index";
     }
 
