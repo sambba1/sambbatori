@@ -5,18 +5,20 @@
 		font-family: arial, sans-serif;
 		border-collapse: collapse;
 		width: 100%;
+		
 		}
-
+		
 		td, th {
 		border: 1px solid #dddddd;
 		text-align: left;
-		padding: 8px;
+		padding: 18px;
+		
 		}
 
 		tr:nth-child(even) {
 		background-color: #dddddd;
 		}
-
+		tr:hover {background-color: rgb(111, 121, 255);}
 
 	</style>
 <head>
@@ -62,7 +64,7 @@
 		</tr>
 		<tr th:each="listing : ${listings}" style="cursor: pointer" th:onclick="'javascript:rowClicked(\'' + ${listing.listing_id} + '\');'">
 			<td th:text="${listing.name}"></td>
-			<td th:text="${listing.price}">Hinta</td>
+			<td th:text="${listing.price} + '€'">Hinta</td>
 			<td th:text="${listing.category.name}">Kategoria</td>
 			<td th:text="${listing.user.getUsername()}">Myyjä</td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${listing.listing_id})}" class="btn btn-xs btn-danger">Poista</a></td> 	
