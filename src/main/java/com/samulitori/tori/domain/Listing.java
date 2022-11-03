@@ -15,6 +15,7 @@ public class Listing {
     private Long listing_id;
 
     private String name;
+    private String kuvaus;
     private double price;
 
     @ManyToOne
@@ -38,9 +39,10 @@ public class Listing {
     public Listing() {}
 
 
-    public Listing(String name, double price, Category category, User user){
+    public Listing(String name,String kuvaus, double price, Category category, User user){
         super();
         this.name = name;
+        this.kuvaus = kuvaus;
         this.price = price;
         this.category = category;
         this.user = user;
@@ -80,6 +82,16 @@ public class Listing {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+
+    public String getKuvaus() {
+        return kuvaus;
+    }
+
+
+    public void setKuvaus(String kuvaus) {
+        this.kuvaus = kuvaus;
     }
 
 

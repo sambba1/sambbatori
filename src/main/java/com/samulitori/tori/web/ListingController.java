@@ -48,8 +48,9 @@ public class ListingController {
     }
 
     @GetMapping(value="/listing/{id}")
-    public String showListing(@PathVariable("id") Long listingId, Model model){
+    public String showListing(Principal principal, @PathVariable("id") Long listingId, Model model){
         model.addAttribute("listings", listingRepo.findById(listingId).get());
+        model.addAttribute("user", userRepo.findByUsername(principal.getName()));
         return "listing";
     }
 

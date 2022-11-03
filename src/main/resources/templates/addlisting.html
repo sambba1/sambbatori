@@ -59,8 +59,12 @@
 	</div>
 	
     <form th:object="${listing}" th:action="@{../save}" action="#" method="post">
-        <label for="name">Teksti</label>
-        <textarea type="text" id="name" th:field="*{name}"></textarea>
+
+        <label for="price">Otsikko</label>
+        <input type="text" id="price" th:field="*{name}"><br>
+
+        <label for="kuvaus">Teksti</label><br>
+        <textarea type="text" id="kuvaus" th:field="*{kuvaus}"></textarea>
 
         <label for="price">Hinta</label>
         <input type="text" id="price" th:field="*{price}">

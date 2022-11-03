@@ -38,7 +38,7 @@ public class ToriApplication {
 			categoryRepo.save(new Category("Puhelimet"));
 
 
-			listingRepo.save(new Listing("Myydään iphone x", 300, categoryRepo.findByName("Puhelimet").get(0), userRepo.findByUsername("seppo")));
+			listingRepo.save(new Listing("bmw 330d","ajettu 400tkm ostakaa plz", 19990, categoryRepo.findByName("Autot").get(0), userRepo.findByUsername("seppo")));
 
 
 						

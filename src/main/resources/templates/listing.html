@@ -9,7 +9,9 @@
 <body>
 	
 
-
+	<div class="col-md-4">
+		<h3 th:inline="text">[[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
 	<div class="col-md-4" style="padding:20px 0">
 		<form th:action="@{/logout}" method="post">
 			<input type="submit" value="Kirjaudu ulos" class="btn btn-sm btn-danger"/>
@@ -22,20 +24,30 @@
 	<table class="table table-striped">
 		<tr>
 
-			<th>Ilmoitus</th>
+			<th>Otsikko</th>
 			<th>Hinta</th>
 			<th>Kategoria</th>
 			<th>Myyjä</th>
 		</tr>
 		<tr th:each="listing : ${listings}">
 			
-			<td th:text="${listing.name}">Ilmoitus</td>
+			<td th:text="${listing.name}">Otsikko</td>
 			<td th:text="${listing.price}">Hinta</td>
 			<td th:text="${listing.category.name}">Kategoria</td>
 			<td th:text="${listing.user.getUsername()}">Myyjä</td>
-			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${listing.listing_id})}" class="btn btn-xs btn-danger">Poista</a></td>    		
+			<td th:if="${user == listing.getUser()}"><a th:href="@{/delete/{id}(id=${listing.listing_id})}" class="btn btn-xs btn-danger">Poista</a></td>    		
 		</tr>
+
 	</table>
+    <table class="table table-striped">
+
+        <tr>
+            <th>Kuvaus</th>
+            <tr th:each="listing : ${listings}">
+                <td th:text="${listing.kuvaus}">Otsikko</td>
+            </tr>
+        </tr>
+    </table>
 	
 </body>
 </html>
