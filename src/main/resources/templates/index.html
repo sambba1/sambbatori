@@ -1,37 +1,10 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-	<style>
+	
 
-
-		body {
-			background-color: rgb(158, 158, 158);
-		}
-
-		table {
-		font-family: arial, sans-serif;
-		border-collapse: collapse;
-		width: 100%;
-		
-		}
-		input, button {
-  			background-color: #d1d1d1;
-		}	
-		
-		td, th {
-		border: 1px solid #dddddd;
-		text-align: left;
-		padding: 18px;
-		
-		}
-
-		tr:nth-child(even) {
-		background-color: #6b6b6b;
-		}
-		tr:hover {background-color: rgb(111, 121, 255);}
-	</style>
 <head>
 
-
+	<link type="text/css" rel="stylesheet" href="/css/index.css">
 	<script>
 
 		function rowClicked(value) {
@@ -69,14 +42,14 @@
 </head>
 <body>
 	
-	<div class="col-md-4">
-		<h1>Ilmoitukset</h1>
-	</div>
 
-	<div class="col-md-4" style="padding:20px 0">
-		<h3 th:inline="text">Tervetuloa [[${#httpServletRequest.remoteUser}]]!</h3>
-		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Kirjaudu ulos" class="btn btn-sm btn-danger"/>
+	<div class="col-md-4">
+
+		<h1>Ilmoitukset</h1>
+		<h2 style="text-align: center;" th:inline="text">Hei [[${#httpServletRequest.remoteUser}]]!</h2>
+
+		<form th:action="@{/logout}" method="post" style="float:right; clear:both;">
+			<input type="submit" value="Kirjaudu ulos" />
 		</form>
 	</div>
 
@@ -86,8 +59,9 @@
 
 	
 
-	<div>
-		<input type="text" id="searchInput" onkeyup="search()" placeholder="Etsi...">
+	<div style="text-align: center;">
+		<input type="text" id="searchInput" placeholder="...">
+		<button onclick="search()">Etsi</button>
 	</div>
 	<table id="listingTable" class="table table-striped table-bordered table-hover" >
 
