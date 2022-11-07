@@ -1,6 +1,25 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
+<style>
+    		body {
+			background-color: rgb(158, 158, 158);
+		}
+
+		
+		
+		input, button {
+  			background-color: #d1d1d1;
+		}	
+		
+		td, th {
+		border: 0px solid #dddddd;
+		text-align: left;
+		padding: 18px;
+		
+		}
+</style>
+
 <head>
 	<title>Tori</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -26,15 +45,15 @@
 
 			<th>Otsikko</th>
 			<th>Hinta</th>
-			<th>Kategoria</th>
 			<th>Myyjä</th>
+			<th>Ilmotus jätetty</th>
 		</tr>
 		<tr th:each="listing : ${listings}">
 			
 			<td th:text="${listing.name}">Otsikko</td>
-			<td th:text="${listing.price}">Hinta</td>
-			<td th:text="${listing.category.name}">Kategoria</td>
+			<td th:text="${listing.price} + '€'">Hinta</td>
 			<td th:text="${listing.user.getUsername()}">Myyjä</td>
+			<td th:text="${listing.date}">Ilmoitus jätetty</td>
 			<td th:if="${user == listing.getUser()}"><a th:href="@{/delete/{id}(id=${listing.listing_id})}" class="btn btn-xs btn-danger">Poista</a></td>    		
 		</tr>
 
@@ -44,7 +63,7 @@
         <tr>
             <th>Kuvaus</th>
             <tr th:each="listing : ${listings}">
-                <td th:text="${listing.kuvaus}">Otsikko</td>
+                <td style="white-space: pre-line" th:text="${listing.kuvaus}">Otsikko</td>
             </tr>
         </tr>
     </table>

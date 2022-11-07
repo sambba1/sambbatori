@@ -1,5 +1,7 @@
 package com.samulitori.tori.domain;
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +19,7 @@ public class Listing {
     private String name;
     private String kuvaus;
     private double price;
+    private String date;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -39,13 +42,14 @@ public class Listing {
     public Listing() {}
 
 
-    public Listing(String name,String kuvaus, double price, Category category, User user){
+    public Listing(String name,String kuvaus, double price, Category category, User user, String date){
         super();
         this.name = name;
         this.kuvaus = kuvaus;
         this.price = price;
         this.category = category;
         this.user = user;
+        this.date = date;
     }
 
 
@@ -93,6 +97,18 @@ public class Listing {
     public void setKuvaus(String kuvaus) {
         this.kuvaus = kuvaus;
     }
+
+
+    public String getDate() {
+        return date;
+    }
+
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+
 
 
 }

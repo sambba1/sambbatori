@@ -2,6 +2,13 @@ package com.samulitori.tori.web;
 
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Date;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,6 +65,10 @@ public class ListingController {
 
     @PostMapping(value = "/save")
     public String saveListing(@ModelAttribute Listing newListing, Model model){
+        LocalDate ld = LocalDate.now();
+        Locale finLocale = new Locale("fi", "FI");
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(finLocale);
+        newListing.setDate(dateFormat.format(ld));
         listingRepo.save(newListing);
         return "redirect:index";
     }

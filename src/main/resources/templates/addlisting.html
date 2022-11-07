@@ -64,19 +64,19 @@
         <input type="text" id="price" th:field="*{name}"><br>
 
         <label for="kuvaus">Teksti</label><br>
-        <textarea type="text" id="kuvaus" th:field="*{kuvaus}"></textarea>
+        <textarea style="white-space: pre-wrap;" type="text" id="kuvaus" th:field="*{kuvaus}"></textarea>
 
         <label for="price">Hinta</label>
         <input type="text" id="price" th:field="*{price}">
-
-        <select id="userlist" th:field="*{user.id}" class="form-control">
-          <option th:each="user:${user}"
-            th:value="${user.id}"
-            th:text="${user.getUsername()}">
-          </option>
-        
-        </select>
-
+        <div style="display: none">
+          <select id="userlist" th:field="*{user.id}" class="form-control">
+            <option th:each="user:${user}"
+              th:value="${user.id}"
+              th:text="${user.getUsername()}">
+            </option>
+          
+          </select>
+        </div>
         
         <label for="category">Kategoria</label>
         <select id="category" th:field="*{category.category_id}" class="form-control">
